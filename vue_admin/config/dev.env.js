@@ -4,5 +4,5 @@ const prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  API_ROOT: '"//www.lala.com/wechat"'
+  API_ROOT: '"//www.lala.com/api"'
 })
