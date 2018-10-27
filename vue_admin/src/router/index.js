@@ -25,6 +25,11 @@ export default new Router({
                     meta: { title: '测试' }
                 },
                 {
+                    path: '/testNode',
+                    component: resolve => require(['../components/page/testNode.vue'], resolve),
+                    meta: { title: '测试Node' }
+                },
+                {
                     path: '/icon',
                     component: resolve => require(['../components/page/Icon.vue'], resolve),
                     meta: { title: '自定义图标' }

@@ -49,6 +49,11 @@
                         title: '测试'
                     },
                     {
+                        icon: 'el-icon-lx-home',
+                        index: 'testNode',
+                        title: '测试Node'
+                    },
+                    {
                         icon: 'el-icon-lx-cascades',
                         index: 'table',
                         title: '基础表格'
