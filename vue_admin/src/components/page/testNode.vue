@@ -136,14 +136,15 @@
                 //     this.url = '/ms/table/list';
                 // };
                 // this.url = process.env.API_ROOT+'/goodsListInfo';
+                //请求nodejs接口
                 this.url = 'http://127.0.0.1:8081';
                 console.log(this.url)
                 this.$axios.post(this.url, {
                     page: this.cur_page
                 }).then((res) => {
                     alert(res.data.msg);
-                    // this.tableData = res.data.data.goods_list_body;
-                    // this.total_num = res.data.data.total_num;
+                    this.tableData = res.data.data.goods_list_body;
+                    this.total_num = res.data.data.total_num;
                 })
             },
             search() {
