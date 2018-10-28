@@ -10,7 +10,7 @@ app.use(bodyParser.json());//返回一个只解析json的中间件，最后保�
 app.use(bodyParser.urlencoded({ extended: true }));//返回的对象为任意类型
 
 //允许跨域请求
-app.all('/', function(req, res, next) {
+app.all('/*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -46,6 +46,35 @@ app.post('/',function(req, res){
     }
     request(options, callback);
 })
+
+
+app.get('/', function (req, res) {
+    console.log("主页 GET 请求");
+    res.send('Hello GET');
+ })
+  
+ //请求第三方接口(本地配置的域名为www.lala.com的laravel接口)
+ app.post('/login',function(req, res){
+     var method = req.method.toUpperCase();
+     var proxy_url = 'http://www.lala.com/api/loginInfo';
+     var options = {
+             headers: {"Connection": "close"},
+             url: proxy_url,
+             method: method,
+             json: true,
+             //请求的参数
+             body: req.body
+     };
+     function callback(error, response, data) {
+         if (!error && response.statusCode == 200) {    
+             console.log('------接口数据------',data);
+             //返回json数据
+             res.json(data)
+         }
+     }
+     request(options, callback);
+ })
+ 
 
 
 

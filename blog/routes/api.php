@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::any('/goodsListInfo', 'Admin\GoodsController@getGoodsList');
+Route::any('/loginInfo', 'Admin\LoginController@index');
