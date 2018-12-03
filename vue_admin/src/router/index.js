@@ -1,11 +1,17 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-
+import lang from '@/assets/lang'
+import VueI18n from 'vue-i18n'
+Vue.use(VueI18n)
 Vue.use(Router);
 
+const i18n = new VueI18n({
+    locale: 'us',
+    messages: lang
+})
+
 export default new Router({
-    routes: [
-        {
+    routes: [{
             path: '/',
             redirect: '/dashboard'
         },
@@ -13,8 +19,7 @@ export default new Router({
             path: '/',
             component: resolve => require(['../components/common/Home.vue'], resolve),
             meta: { title: '自述文件' },
-            children:[
-                {
+            children: [{
                     path: '/dashboard',
                     component: resolve => require(['../components/page/Dashboard.vue'], resolve),
                     meta: { title: '系统首页' }
@@ -22,6 +27,13 @@ export default new Router({
                 {
                     path: '/test',
                     component: resolve => require(['../components/page/test.vue'], resolve),
+                    beforeEnter: (to, from, next) => {
+                        i18n.locale = sessionStorage.getItem("language"),
+                            console.log(i18n.t('test.aa'))
+                            // console.log(Vue.$i18n)
+                            // console.log(from)
+                            // console.log(next)
+                    },
                     meta: { title: '测试' }
                 },
                 {
