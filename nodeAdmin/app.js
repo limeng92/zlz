@@ -25,6 +25,13 @@ app.all("*", (req, res, next) => {
 
 router(app);
 
-app.listen(config.port, () => {
-  console.log(chalk.green(`成功监听端口：${config.port}`));
+var server = app.listen(8081, function() {
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log("应用实例，访问地址为 http://%s:%s", host, port);
 });
+
+// app.listen(config.port, () => {
+//   console.log(chalk.green(`成功监听端口：${config.port}`));
+// });

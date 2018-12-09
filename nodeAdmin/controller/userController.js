@@ -7,17 +7,7 @@ class User {
     this.login = this.login.bind(this);
   }
   async login(req, res, next) {
-    console.log(">>>>>>>>>>>>>>>>>login", "login");
-    const form = new formidable.IncomingForm();
-    form.parse(req, async (err, fields, files) => {
-      if (err) {
-        res.send({
-          status: 0,
-          type: "FORM_DATA_ERROR",
-          message: "表单信息错误"
-        });
-        return;
-      }
+      //TODO 接收参数
       const { user_name, password, status = 1 } = fields;
       try {
         if (!user_name) {
