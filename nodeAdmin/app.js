@@ -5,6 +5,13 @@ import chalk from "chalk";
 
 const app = express();
 
+/**
+ *解析请求的消息体
+ */
+var bodyParser = require("body-parser");
+app.use(bodyParser.json()); //返回一个只解析json的中间件，最后保存的数据都放在req.body对象上
+app.use(bodyParser.urlencoded({ extended: true })); //返回的对象为任意类型
+
 app.all("*", (req, res, next) => {
   const { origin, Origin, referer, Referer } = req.headers;
   const allowOrigin = origin || Origin || referer || Referer || "*";
