@@ -1,4 +1,5 @@
 import express from "express";
+import db from "./db/mongodb.js";
 import config from "config-lite";
 import router from "./routes/index.js";
 import chalk from "chalk";

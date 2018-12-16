@@ -29,7 +29,7 @@ class User {
     }
 
     try {
-      const admin = await UserModel.findOne({ user_name });
+      const admin = await UserModel.findOne({ user_name: userName });
       if (admin) {
         res.send({
           status: 1,
